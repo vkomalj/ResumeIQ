@@ -1,0 +1,20 @@
+[flake8]
+max-line-length = 100
+extend-ignore = E203, E501
+exclude =
+    .git,
+    __pycache__,
+    alembic,
+    .venv,
+    venv
+per-file-ignores =
+    __init__.py: F401
+    models/__init__.py: F401
+    main.py: E402, F401
+    utils/vector_store.py: E402, F401
+    db/db.py: F811
+    api/resume.py: F401
+    services/pool_service.py: F401
+    services/user_service.py: F401
+    models/job_matches_model.py: F401
+    utils/ai_extractor.py: E722

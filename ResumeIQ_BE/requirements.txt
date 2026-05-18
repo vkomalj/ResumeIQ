@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+scikit-learn
+pandas
+python-multipart
+PyPDF2
+openai
+rapidfuzz
+python-dotenv
+chromadb
+passlib
+bcrypt
+sqlalchemy
+psycopg2-binary
+email-validator

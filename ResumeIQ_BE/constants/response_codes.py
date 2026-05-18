@@ -1,0 +1,9 @@
+# Success
+SUCCESS = 1000
+
+# Auth errors
+INVALID_CREDENTIALS = 1001
+USER_NOT_FOUND = 1002
+
+# Server
+SERVER_ERROR = 1003

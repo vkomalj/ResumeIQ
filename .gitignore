@@ -1,0 +1,14 @@
+# OS Generated Files
+.DS_Store
+Thumbs.db
+
+# Virtual Environments
+.venv
+venv/
+
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.local

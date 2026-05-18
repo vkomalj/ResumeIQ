@@ -1,0 +1,165 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Google Pure White / Clean Theme */
+  --background: oklch(0.98 0.005 264);  /* #f8f9fa - Lightest Gray */
+  --foreground: oklch(0.15 0.02 264);    /* Dark Gray/Black */
+  --card: oklch(1.00 0 0);               /* Pure White */
+  --card-foreground: oklch(0.15 0.02 264);
+  --popover: oklch(1.00 0 0);
+  --popover-foreground: oklch(0.15 0.02 264);
+
+  /* Precise Google Brand Palette */
+  --primary: #1a73e8;    /* Google Blue */
+  --success: #1e8e3e;    /* Google Green */
+  --warning: #f9ab00;    /* Google Yellow */
+  --error: #d93025;      /* Google Red */
+  
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.95 0.005 264);   /* Light Grey */
+  --secondary-foreground: oklch(0.15 0.02 264);
+
+  --muted: oklch(0.97 0.003 264);
+  --muted-foreground: oklch(0.45 0.02 264);
+
+  --accent: oklch(0.93 0.01 258);
+  --accent-foreground: #1a73e8;
+
+  --destructive: #d93025;
+  --destructive-foreground: #ffffff;
+
+  --border: #dadce0;     /* Google Standard Border */
+  --input: #ffffff;
+  --ring: #1a73e8;
+
+  --radius: 0.75rem;
+
+  /* Charts */
+  --chart-1: #1a73e8;
+  --chart-2: #1e8e3e;
+  --chart-3: #d93025;
+  --chart-4: #f9ab00;
+  --chart-5: #a142f4;
+}
+
+.dark {
+  /* Minimal Dark Mode handling - keeping it light for user request */
+  --background: oklch(0.13 0.015 258);
+  --foreground: oklch(0.95 0.005 264);
+  --card: oklch(0.17 0.015 258);
+  --card-foreground: oklch(0.95 0.005 264);
+  --primary: #8ab4f8;
+  --border: oklch(0.25 0.02 258);
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Google Sans', system-ui, -apple-system;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  input, textarea {
+    color: oklch(0.15 0.02 264);
+  }
+  ::selection {
+    background-color: #1a73e8;
+    color: #ffffff;
+  }
+  input::selection,
+  textarea::selection {
+    background-color: #1a73e8;
+    color: #ffffff;
+  }
+  
+  /* Google-style thin scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full border-2 border-transparent bg-clip-padding;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer utilities {
+  /* Material 3 Surface */
+  .material-card {
+    @apply bg-card border border-border/60 shadow-sm rounded-2xl;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  }
+  .material-card:hover {
+    @apply border-border;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.05);
+    transform: translateY(-2px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Material Elevation Styles */
+  .elevation-1 { box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15); }
+  .elevation-2 { box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15); }
+
+  /* Google Button styles */
+  .btn-google {
+    @apply h-11 px-6 rounded-full font-bold text-sm tracking-wide transition-all;
+  }
+  .btn-google-primary {
+    @apply bg-primary text-white hover:bg-[#1557b0] shadow-sm hover:shadow-md active:scale-95;
+  }
+  
+  /* Hero background — Google-inspired Pure White */
+  .hero-bg {
+    background-color: var(--background);
+    background-image: 
+      linear-gradient(rgba(26, 115, 232, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 115, 232, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Text Gradients - minimal use */
+  .text-brand {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#4285F4] via-[#34A853] to-[#EA4335];
+  }
+
+  /* Refined Glass - used sparingly */
+  .glass-card {
+    @apply bg-white border border-border shadow-sm rounded-3xl;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
